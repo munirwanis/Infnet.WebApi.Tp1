@@ -1,4 +1,4 @@
-﻿namespace Infnet.WebApi.Tp1.Business.Entities
+﻿namespace Entities
 {
     public class Contact
     {

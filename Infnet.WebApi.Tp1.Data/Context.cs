@@ -4,5 +4,6 @@ namespace Infnet.WebApi.Tp1.Data
 {
     public class Context : DbContext
     {
+        public DbSet<Contact>
     }
 }
