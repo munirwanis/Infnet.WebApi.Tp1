@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infnet.WebApi.Tp1.Business"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infnet.WebApi.Tp1.Data", "Infnet.WebApi.Tp1.Data\Infnet.WebApi.Tp1.Data.csproj", "{BD7D2556-F7E6-42C9-9850-9AE99FC8B5FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{786C7004-925A-483A-B127-CF9803F0DF3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infnet.WebApi.Tp1.Entities", "Entities\Infnet.WebApi.Tp1.Entities.csproj", "{786C7004-925A-483A-B127-CF9803F0DF3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
