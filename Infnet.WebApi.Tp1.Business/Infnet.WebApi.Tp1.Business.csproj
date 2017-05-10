@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Infnet.WebApi.Tp1.Entities.csproj">
+      <Project>{786c7004-925a-483a-b127-cf9803f0df3c}</Project>
+      <Name>Infnet.WebApi.Tp1.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infnet.WebApi.Tp1.Data\Infnet.WebApi.Tp1.Data.csproj">
+      <Project>{bd7d2556-f7e6-42c9-9850-9ae99fc8b5fe}</Project>
+      <Name>Infnet.WebApi.Tp1.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
