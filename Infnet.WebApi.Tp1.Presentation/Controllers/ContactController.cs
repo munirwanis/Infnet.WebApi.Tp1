@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Infnet.WebApi.Tp1.Business;
+using Infnet.WebApi.Tp1.Presentation.Mapper;
 using System.Web.Mvc;
 
 namespace Infnet.WebApi.Tp1.Presentation.Controllers
 {
     public class ContactController : Controller
     {
+        private readonly Manager _manager;
+        public ContactController()
+        {
+            this._manager = new Manager();
+        }
         // GET: Contact
         public ActionResult Index()
         {
-            return View();
+            var contacts = this._manager.GetContacts();
+            var contactsView = ContactMapper.MapContactView(contacts);
+            return View(contactsView);
         }
 
         // GET: Contact/Details/5

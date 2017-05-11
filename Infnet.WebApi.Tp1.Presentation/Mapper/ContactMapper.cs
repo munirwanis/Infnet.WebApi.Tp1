@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Infnet.WebApi.Tp1.Presentation.Mapper
 {
-    internal class ContactMapper
+    internal static class ContactMapper
     {
-        internal List<ContactViewModel> MapContactView(List<Contact> contacts) =>
+        internal static List<ContactViewModel> MapContactView(List<Contact> contacts) =>
             (from cs in contacts
              select new ContactViewModel
              {
