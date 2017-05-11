@@ -19,6 +19,20 @@ namespace Infnet.WebApi.Tp1.Presentation.Controllers
             return View(contactsView);
         }
 
+        public ActionResult ContactWithEmail()
+        {
+            var contacts = this._manager.GetContacts();
+            var contactsView = ContactMapper.MapContactView(contacts);
+            return View("ContactWithEmail", contactsView);
+        }
+
+        public ActionResult ContactWithPhone()
+        {
+            var contacts = this._manager.GetContacts();
+            var contactsView = ContactMapper.MapContactView(contacts);
+            return View("ContactWithPhone", contactsView);
+        }
+
         // GET: Contact/Details/5
         public ActionResult Details(int id)
         {
