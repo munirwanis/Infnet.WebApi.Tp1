@@ -1,5 +1,8 @@
 ﻿using Infnet.WebApi.Tp1.Business;
 using Infnet.WebApi.Tp1.Presentation.Mapper;
+using Infnet.WebApi.Tp1.Presentation.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Infnet.WebApi.Tp1.Presentation.Controllers
@@ -7,36 +10,60 @@ namespace Infnet.WebApi.Tp1.Presentation.Controllers
     public class ContactController : Controller
     {
         private readonly Manager _manager;
+        private List<ContactViewModel> _contactsView;
         public ContactController()
         {
             this._manager = new Manager();
-        }
-        // GET: Contact
-        public ActionResult Index()
-        {
             var contacts = this._manager.GetContacts();
-            var contactsView = ContactMapper.MapContactView(contacts);
-            return View(contactsView);
+            this._contactsView = ContactMapper.MapContactView(contacts);
         }
+
+        // GET: Contact
+        public ActionResult Index() =>
+            View(this._contactsView);
 
         public ActionResult ContactWithEmail()
         {
-            var contacts = this._manager.GetContacts();
-            var contactsView = ContactMapper.MapContactView(contacts);
-            return View("ContactWithEmail", contactsView);
+            if (TempData["Contacts"] == null)
+            {
+                TempData["Contacts"] = this._contactsView;
+            }
+            TempData.Keep();
+            return View("ContactWithEmail", TempData["Contacts"]);
         }
 
         public ActionResult ContactWithPhone()
         {
-            var contacts = this._manager.GetContacts();
-            var contactsView = ContactMapper.MapContactView(contacts);
-            return View("ContactWithPhone", contactsView);
+            if (TempData["Contacts"] == null)
+            {
+                TempData["Contacts"] = this._contactsView;
+            }
+            TempData.Keep();
+            return View("ContactWithPhone", TempData["Contacts"]);
         }
 
         // GET: Contact/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Select(int id, string page)
         {
-            return View();
+            var contacts = (List<ContactViewModel>)TempData["Contacts"];
+            foreach (var c in contacts)
+            {
+                if (c.Id == id)
+                {
+                    if (c.Selected)
+                    {
+                        c.Selected = false;
+                    }
+                    else
+                    {
+                        c.Selected = true;
+                    }
+                }
+            }
+            TempData.Clear();
+            TempData["Contacts"] = contacts;
+
+            return RedirectToAction(page);
         }
 
         // GET: Contact/Create
